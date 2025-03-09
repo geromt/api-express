@@ -4,11 +4,15 @@
   "description": "Example of API with Node.js and Express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-1": "node --watch express.js"
   },
   "author": "Gerardo Daniel Martínez Trujillo",
   "license": "MIT",
   "devDependencies": {
     "standard": "^17.1.2"
+  },
+  "dependencies": {
+    "express": "4.21.2"
   }
 }

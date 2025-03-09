@@ -26,6 +26,30 @@ const processRequest = (req, res) => {
           res.statusCode = 404
           res.end('Error 404: Página no encontrada')
       }
+      break
+    case 'POST':
+      switch (url) {
+        case '/holi': {
+          let body = ''
+          // El evento 'data' se dispara cuando se recibe un fragmento del cuerpo del mensaje
+          req.on('data', (chunk) => {
+            body += chunk
+          })
+
+          req.on('end', () => {
+            const data = JSON.parse(body)
+            const timestamp = Date.now()
+            data.timestamp = timestamp
+
+            res.writeHead(201, { 'Content-Type': 'application/json; charset=utf-8' }) // Otra forma de agregar los headers
+            res.end(JSON.stringify(data))
+          })
+          break
+        }
+        default:
+          res.statusCode = 404
+          res.end('Error 404: Página no encontrada')
+      }
   }
 }
 
